@@ -1,0 +1,19 @@
+https://www.geeksforgeeks.org/batch/gfg-160-problems/track/arrays-gfg-160/problem/second-largest3735
+
+class Solution {
+    public int getSecondLargest(int[] arr) {
+        // Code Here
+        int max=arr[0];
+        int smax=-1;
+        for(int i=1;i<arr.length;i++){
+            if(arr[i]>max){
+                smax=max;
+                max=arr[i];
+            }
+            else if(arr[i]<max && arr[i]>smax){
+                smax=arr[i];
+            }
+        }
+        return smax;
+    }
+}
