@@ -1,0 +1,25 @@
+https://www.geeksforgeeks.org/batch/gfg-160-problems/track/arrays-gfg-160/problem/majority-vote
+
+class Solution {
+    // Function to find the majority elements in the array
+    public List<Integer> findMajority(int[] nums) {
+        // Your code goes here.
+        ArrayList<Integer> arr=new ArrayList<>();
+        int n=nums.length;
+        Arrays.sort(nums);
+        int count=1;
+        
+        for(int i=1;i<=n;i++){
+            if(i<n && nums[i]==nums[i-1]){
+                count++;
+            }
+            else{
+                if(count>(n/3)){
+                    arr.add(nums[i-1]);
+                }
+                count=1;
+            }
+        }
+        return arr;
+    }
+}
