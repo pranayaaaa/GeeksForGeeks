@@ -1,0 +1,59 @@
+https://www.geeksforgeeks.org/problems/parenthesis-checker2744/1?page=1&category=Data%20Structures,Linked%20List,Stack,Queue&difficulty=Basic,Easy&sortBy=submissions
+
+//{ Driver Code Starts
+import java.io.*;
+import java.lang.*;
+import java.util.*;
+
+class Driverclass {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+
+        // Reading total number of testcases
+        int t = sc.nextInt();
+
+        while (t-- > 0) {
+            // reading the string
+            String st = sc.next();
+
+            // calling ispar method of Paranthesis class
+            // and printing "balanced" if it returns true
+            // else printing "not balanced"
+            if (new Solution().isParenthesisBalanced(st) == true)
+                System.out.println("true");
+            else
+                System.out.println("false");
+
+            System.out.println("~");
+        }
+    }
+}
+// } Driver Code Ends
+
+
+
+class Solution {
+    // Function to check if brackets are balanced or not.
+    static boolean isParenthesisBalanced(String s) {
+        // code here
+        Stack<Character> stack=new Stack<>();
+        for(char ch: s.toCharArray()){
+            if(ch=='(' || ch=='{' || ch=='['){
+                stack.push(ch);
+            }
+            else if(ch==')' || ch=='}' || ch==']'){
+                
+                if(stack.empty()){
+                    return false;
+                }
+                char top=stack.pop();
+                
+                if((ch==')' && top!='(') || (ch==']' && top!='[') || (ch=='}' && top!='{')){
+                    return false;
+                }
+            }
+        }
+        
+        return stack.isEmpty();
+    }
+}
